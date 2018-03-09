@@ -22,9 +22,5 @@
 
 ## 实例
 
-|  序号  |  问题  |  解析  |  类型  |
-| :--: | :--: | :--: | :--: |
-|      |      |      |      |
-|      |      |      |      |
-|      |      |      |      |
+### [LeetCode](https://leetcode.com/tag/dynamic-programming/)
 
