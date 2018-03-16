@@ -81,7 +81,11 @@
 
 常见的遍历次序有先序(NLR)、中序(LNR)和后序(LRN)。
 
+遍历的实现上也分为两种：一、递归遍历；二、非递归遍历。
+
 ### 先序遍历
+
+#### 递归
 
 ```c
 void PreOrder(BiTree T){
@@ -93,7 +97,29 @@ void PreOrder(BiTree T){
 }
 ```
 
+#### 非递归
+
+在所有非递归遍历方式里面，前序遍历的非递归遍历是最简单的，如果没有要求用哪一种遍历的非递归方式，首先考虑用前序遍历的非递归。
+
+```C
+void PreOrder(BiTree T){
+  stack s;
+  s.push(t)
+  while(!s.empty()){
+    r = s.top();
+    s.pop();
+    if(r != null){
+      	visit(r);
+        s.push(r.right);
+        s.push(r.left);
+    }
+  }
+}
+```
+
 ### 中序遍历
+
+#### 递归
 
 ```c
 void InOrder(BiTree T){
@@ -105,7 +131,29 @@ void InOrder(BiTree T){
 }
 ```
 
+#### 非递归
+
+```c
+void InOrder(BiTree T){
+	stack s;
+  while(!s.empty() || t != null){
+    while(t != null){
+      s.push(t);
+      t = t.left;
+    }
+    if(!s.empty()){
+      t = s.top();
+      visit(t);
+      s.pop();
+      t = t.right;
+    }
+  }
+}
+```
+
 ### 后续遍历
+
+#### 递归
 
 ```c
 void PostOrder(BiTree T){
@@ -117,9 +165,74 @@ void PostOrder(BiTree T){
 }
 ```
 
-### 递归思想的非递归遍历
+### 非递归遍历模板方法
 
-借助栈实现
+其实二叉树的3种遍历策略，无非是处理节点的时机不同：前序遍历是在遇到节点时即处理，中序遍历是在处理完左节点后再处理，而后序是在处理完左右节点后再处理。
+
+使用费递归方法实现时，除了记录当前的节点的访问栈，还需要记录当前节点的状态。对于每一个节点，我们定义如下状态：
+
+- 0 表示 尚未处理左右子节点
+- 1 表示 仅仅处理完毕左节点
+- 2 表示 左右节点都处理完毕
+
+那么，前序、中序、后序遍历的唯一不同，无非是将节点加入序列化结果集合的时机不同而已。
+
+```java
+class Node{
+  int value;
+  Node left;
+  Node right;
+}
+
+public static final int STATE_NONE = 0;
+public static final int STATE_LEFT_DONE = 1;
+public static final int STATE_LEFT_RIGHT_DONE = 2;
+
+public static List<Node> traverse(Node node, int when){
+  List<Node> res = new ArrayList<>() // 序列化结果
+  Stack<Node> stackNode = new Stack<>() // 保存节点的栈
+  Stack<Integer> stackState = new Stack<>() // 保存节点状态的栈
+  
+  stackNode.push(node);
+  stackState.push(STATE_NONE);
+  /*算法说明：
+      *    初始时放入根节点，将其标记为左右节点尚未处理的状态
+      *    每个循环，从栈中取出一个节点和其状态，根据其当前状态转移到下一个状态（很显然，你可以从状态转换机的角度解读这个算法）。
+      *    状态转换规则：  STATE_NONE-->STATE_LEFT_DONE-->STATE_LEFT_RIGTH_DONE-->弹出栈
+      *    伴随状态的变化，还需要相应的操作，如将左右子节点放入栈中，或者将当
+    		前节点弹出栈；最重要的一点是，当当前节点的状态符合处理状态的要求时，就会将节点加入序列化集合。
+      */
+  while(!stackNode.isEmpty())
+    {
+      Node n=stackNode.peek(); 
+      Integer  state=stackState.peek();
+
+     if(state==when)//当前状态可处理节点
+          res.add(n);
+      //3种状态之间的转换
+     if(state==STATE_NONE)
+     {
+       stackState.set(stackState.size()-1,STATE_LEFT_DONE);
+       if(n.left!=null)
+       {
+          stackNode.push(n.left);
+          stackState.push(STATE_NONE);
+       }
+    }else if(state==STATE_LEFT_DONE){ 
+       stackState.set(stackState.size()-1,STATE_LEFT_RIGHT_DONE);
+       if(n.right!=null)
+       {
+          stackNode.push(n.right);
+          stackState.push(STATE_NONE);
+       }
+     }else if(state==STATE_LEFT_RIGHT_DONE){
+        stackNode.pop();
+        stackState.pop();
+     }
+  }
+  return  res;
+}
+```
 
 ### 层次遍历
 
