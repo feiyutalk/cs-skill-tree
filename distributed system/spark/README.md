@@ -1,0 +1,43 @@
+# Spark
+
+## 基本组件
+
+#### Spark Core
+
+基于RDD提供了丰富的操作接口，利用DAG进行统一的任务规划，使得Spark能够更加灵活地处理类似MapReduce的批处理作业。
+
+#### Spark SQL
+
+兼容Hive的接口HQL，提供了比Hive高出10~100倍的查询速度的分布式SQL引擎。
+
+#### Spark Streaming
+
+将流失计算分解成一系列的短小的批处理作业，利用Spark轻量级和低延时的调度框架，可以很好的支持流失处理。目前已经支持的数据输入源包括Kafka、Flume、Twitter、TCP sockets。
+
+#### GraphX
+
+基于Spark的图计算框架，兼容Pregel和GraphLab接口，增强了图构建以及图转换功能。
+
+#### MLib
+
+Spark Core天然地非常适合于迭代式计算，MLlib就是构建在Spark上的机器学习算法库。目前已经可以支持常用的分类算法，聚类算法，推荐算法等。
+
+## 运行模式
+
+Spark应用程序的运行模式取决于传递给SparkContext的MASTER环境变量的值，个别模式还需要依赖辅助的程序接口来配合使用，目前所支持的MASTER环境变量由特定的字符串或URL组成。所有的Spark应用程序都离不开**SparkContext**和**Executor**两部分，Executor负责执行任务，运行Executor的机器称为Worker节点，SparkContext由用户程序启动，通过资源调度模块和Executor通信。
+
+- Local 本地模式，使用N个线程。
+- Spark://hostname:port  Standlone模式。
+- Mesos://hostname:port 
+- YARN cluster 主程序逻辑和任务都运行在YARN集群中。
+- YARN client 主程序逻辑运行在本地，具体任务运行在YARN集群中。
+
+工作流程：
+
+- Application
+- Job
+- Stage
+- Task
+
+![](./images/1.png)
+
