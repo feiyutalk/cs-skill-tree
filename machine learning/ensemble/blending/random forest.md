@@ -1,6 +1,6 @@
 ## Random Forest
 
-在模型融合里，blending方式通过组合不同模型投票的结果，来使得融合后的模型variance变小。而决策树，通过variance比较大，我们是否能够结合这两种思路呢？答案是可以，这就是随机森林。
+在模型融合里，blending方式通过组合不同模型投票的结果，来使得融合后的模型variance变小。而决策树，通常variance比较大，我们是否能够结合这两种思路呢？答案是可以，这就是随机森林。
 
 Random Forest(RF) = bagging + fully-grown C&RT decision tree.
 
