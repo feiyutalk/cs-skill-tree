@@ -31,3 +31,8 @@ Random Forest(RF) = bagging + fully-grown C&RT decision tree.
   - $importance(i) = performance(D) - performance(D^p)$ with $D^p$ is D with $\{x_n, i\}$ replaced by permuted $\{x_n, i\}_{n=1}^N$
   - 正常来说，performance应该怎么得到呢？我们应该对资料为D的模型进行训练，然后获得交叉验证的结果，作为performance(D)。并且对资料为$D^p$的模型进行训练，然后获得交叉验证的结果，作为performance($D^p$)。**注意**，由于训练样本的获取是采样bootstrap，所以可以利用out-of-bag样本做验证集。即，上面的式子就变成了 importance(i) = $E_{oob}(G) - E_{oob}(G^p)$
   - 但是，原始的随机森林的作者， 提出了在验证的过程中做permutation而不是训练的过程中，这样的话，我们只需要做一次训练，两次验证即可。这样的话，结果就变成了importance(i) = $E_{oob}(G) - E_{oob}^p(G)$
+
+### 特点
+
+- 由于每次选择不是在全部的特征上选择最佳切分点，所有bias会有一些上升。
+- 由于平均化，所有variance会有所下降。
