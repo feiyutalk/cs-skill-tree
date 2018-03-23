@@ -24,5 +24,8 @@ RNN基本的等式有：
 
 从上面的推导可以看出，RNN求导是需要依赖非常前面的值。
 
+![](./images/4.png)
 
+#### 梯度爆炸问题(Exploding gradients)
 
+可以使用clipping技术。
