@@ -38,7 +38,7 @@
 
 损失函数为：
 
-$min_{\eta} min_h \frac{1}{N}\sum_{n=1}^{N}exp(-y_n(\sum_{\tau=1}^{t-1}\alpha_\tau g_\tau (x_n) + \eta h(x_n)))$
+$min_{\eta} min_h \frac{1}{N}\sum_{n=1}^{N}exp(-y_n(\sum_{\tau=1}^{t-1}\alpha_\tau g_\tau (x_n)))$
 
 ![](./images/7.png)
 
