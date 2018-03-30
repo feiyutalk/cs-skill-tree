@@ -17,3 +17,7 @@ B = 101010;
 hamming_distance(A, B) = count_1(A xor B) = count_1(001101) = 3;
 ```
 
+### 特点
+
+- 需要一种应对于海量数据场景的去重方案，该算法能够把文档降维到hash数字，数字两两计算运算量要小很多。
+- simhash的发明人Charikar的论文中并没有给出具体的simhash算法和证明，“量子图灵”得出的证明simhash是由随机超平面hash算法演变而来的。
