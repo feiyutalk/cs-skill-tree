@@ -41,7 +41,27 @@ $Perplexity(W_{test})=2^{-\frac{1}{N}\sum_{i=1}^Nq(w_i)}=2^{-\sum_{i=1}^{|V|}\fr
 
 ## Out of Vocabulary
 
-可能出现0的问题。
+可能出现0的问题。使用平滑解决这些操作。
 
+## 平滑
 
+无论有多少数据，平滑几乎总是可以以很小的代价来提高performance。
+
+- **+1** 平滑：$P_{add}(w_i|w_{i-1},w_{i-2})=\frac{\delta+count(w_{i-2},w_{i-1},w_i)}{\delta|V|+\sum_{w_i}}count(w_{i-2},w_{i-1},w_i)$（**政法发钱**）
+  - 在分类问题中可能有用，但是在语言模型中表现一般；
+- **Back-off** 回退法：使用Trigram如果count(trigram)满足一定的条件；否则使用Bigram；否则使用Unigram；（**自己有钱自己出，自己没钱爸爸出，爸爸没钱爷爷出**）
+- **Interpolate**插值法：将Trigram，Bigram，Unigram线性组合起来（**自己 爸爸 爷爷都出一点**）：
+  - $P_{int}(w_i|w_{i-1},w_{i-2})=\lambda_3P_{ML}(w_i|w_{i-1},w_{i-2})+\lambda_2P_{ML}(w_i|w_{i-1})+\lambda_1P_{ML}(w_i),\lambda_3+\lambda_2+\lambda_1=1$
+  - 需要验证集来求$\lambda_1,\lambda_2,\lambda_3$，使用极大似然估计法
+- **Absolute Discounting**绝对折扣：
+- **Kneser-Ney Smoothing**
+
+|          模型          |       简单理解       |       只需要记住        |
+| :------------------: | :--------------: | :----------------: |
+|        +1 平滑         |       政府发钱       |         没用         |
+|       Backoff        |      用爸爸的钱       |                    |
+|     Interpolate      |     自己和爸爸都出点     | Development Set;EM |
+| Absolute Discounting | 有钱人缴固定税，按爸爸的资产分配 |                    |
+|      Kneser-Ney      | 有钱人缴固定税，按爸爸人脉分配  |       词的适配度        |
+|     Modified KN      | 有钱人缴阶梯税，按爸爸人脉分配  |     阶梯税率，最好的方法     |
 
