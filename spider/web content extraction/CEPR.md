@@ -11,7 +11,7 @@
 正文和噪声的主要区别有：
 
 1. 正文通常只包含在一个部分中，但是噪声信息在很多部分中都会出现；
-2. 正文通过都有相同的tag paths；
+2. 正文通常都有相同的tag paths；
 
 **定义：**
 
@@ -34,8 +34,8 @@ $l(v_0),l(v_1)...l(v_k)$称为节点v的tag path，表示为$path(v)$。
 
 ### Text to Tag Path Ratio
 
-- **pathNum：**tag path在tree T中出现的次数，这个概念比较容易造成误解，现在的理解是，叶节点是不算在tag path里面的。tag path是一个tag序列标识，这个序列标识是有可能重复的。
-- **txtNum：**节点中所有字符的个数；
+- **pathNum**：tag path在tree T中出现的次数，这个概念比较容易造成误解，现在的理解是，叶节点是不算在tag path里面的。tag path是一个tag序列标识，tag下可能包含多个叶节点，这些叶结点对应的tag path就是一样的，所以这个序列标识是有可能重复的。
+- **txtNum**：节点中所有字符的个数；
 - $accNodes(p)=\{v_p^1,v_p^2,…,v_p^m\}$是tag path p上可访问的节点的集合；
 - **Text to Tag Path Radio：**$TPR(p)=\frac{\sum_{v\in accNodes(p)}length(c(v))}{|accNodes(p)|}$
   - 对于包含长文本的路径，该值很高；
