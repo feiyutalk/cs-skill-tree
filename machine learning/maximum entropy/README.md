@@ -8,18 +8,18 @@
 
 # 例子说明
 
-![Screen Shot 2018-04-09 at 11.14.02](../../../../../../../Desktop/Screen Shot 2018-04-09 at 11.14.02.png)
+![Screen Shot 2018-04-09 at 11.14.02](http://p6sh0jwf6.bkt.clouddn.com/2018-04-09-075924.jpg)
 
 # 模型推导
 
-![Screen Shot 2018-04-09 at 11.15.16](../../../../../../../Desktop/Screen Shot 2018-04-09 at 11.15.16.png)
+![Screen Shot 2018-04-09 at 11.15.16](http://p6sh0jwf6.bkt.clouddn.com/2018-04-09-075922.jpg)
 
-![Screen Shot 2018-04-09 at 11.15.34](../../../../../../../Desktop/Screen Shot 2018-04-09 at 11.15.34.png)
+![Screen Shot 2018-04-09 at 11.15.34](http://p6sh0jwf6.bkt.clouddn.com/2018-04-09-075915.jpg)
 
-![Screen Shot 2018-04-09 at 11.15.54](../../../../../../../Desktop/Screen Shot 2018-04-09 at 11.15.54.png)
+![Screen Shot 2018-04-09 at 11.15.54](http://p6sh0jwf6.bkt.clouddn.com/2018-04-09-075920.jpg)
 
-![Screen Shot 2018-04-09 at 11.16.49](../../../../../../../Desktop/Screen Shot 2018-04-09 at 11.16.49.png)
+![Screen Shot 2018-04-09 at 11.16.49](http://p6sh0jwf6.bkt.clouddn.com/2018-04-09-075918.jpg)
 
 ## 最大熵与极大似然估计的关系
 
-![Screen Shot 2018-04-09 at 11.17.23](../../../../../../../Desktop/Screen Shot 2018-04-09 at 11.17.23.png)
+![Screen Shot 2018-04-09 at 11.17.23](http://p6sh0jwf6.bkt.clouddn.com/2018-04-09-075923.jpg)
